@@ -10,3 +10,4 @@ public class ProjetolojavirtualApplication {
 		SpringApplication.run(ProjetolojavirtualApplication.class, args);
 	}
 }
+
