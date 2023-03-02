@@ -10,10 +10,15 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import com.eduardomatsuda.lojavirtual.domain.Categoria;
 import com.eduardomatsuda.lojavirtual.domain.Cidade;
+import com.eduardomatsuda.lojavirtual.domain.Cliente;
+import com.eduardomatsuda.lojavirtual.domain.Endereco;
 import com.eduardomatsuda.lojavirtual.domain.Estado;
 import com.eduardomatsuda.lojavirtual.domain.Produto;
+import com.eduardomatsuda.lojavirtual.domain.enums.TipoCliente;
 import com.eduardomatsuda.lojavirtual.repositories.CategoriaRepository;
 import com.eduardomatsuda.lojavirtual.repositories.CidadeRepository;
+import com.eduardomatsuda.lojavirtual.repositories.ClienteRepository;
+import com.eduardomatsuda.lojavirtual.repositories.EnderecoRepository;
 import com.eduardomatsuda.lojavirtual.repositories.EstadoRepository;
 import com.eduardomatsuda.lojavirtual.repositories.ProdutoRepository;
 
@@ -31,6 +36,12 @@ public class ProjetolojavirtualApplication implements CommandLineRunner {
 	
 	@Autowired
 	private CidadeRepository cidadeRepository;
+	
+	@Autowired
+	private ClienteRepository clienteRepository;
+	
+	@Autowired
+	private EnderecoRepository enderecorepository;
 
 	public static void main(String[] args) {
 		SpringApplication.run(ProjetolojavirtualApplication.class, args);
@@ -68,6 +79,16 @@ public class ProjetolojavirtualApplication implements CommandLineRunner {
 		
 		estadoRepository.saveAll(Arrays.asList(est1, est2));
 		cidadeRepository.saveAll(Arrays.asList(c1, c2, c3));
+		
+		Cliente cli1 = new Cliente(null, "MariaSilva", "maria@gmail.com", "36378912377", TipoCliente.PESSOAFISICA);
+		cli1.getTelefones().addAll(Arrays.asList("27363323", "993838393"));
+		
+		Endereco e1 = new Endereco(null, "Rua das Flores","300", "Apto 203", "Jardim", "38220834", cli1, c1);
+		Endereco e2 = new Endereco(null, "Avenida Matos", "105", "Sala 800", "Centro", "38777012", cli1, c2);
+		cli1.getEnderecos().addAll(Arrays.asList(e1, e2));
+		
+		clienteRepository.saveAll(Arrays.asList(cli1));
+		enderecorepository.saveAll(Arrays.asList(e1, e2));
 	}
 }
 
