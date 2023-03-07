@@ -71,6 +71,12 @@ public class ProjetolojavirtualApplication implements CommandLineRunner {
 		
 		Categoria cat1 = new Categoria(null, "Peças e Acessorios");
 		Categoria cat2 = new Categoria(null, "Pneus");
+		Categoria cat3 = new Categoria(null, "Escapamentos");
+		Categoria cat4 = new Categoria(null, "Caminhões");
+		Categoria cat5 = new Categoria(null, "Vans e Mini-Vans");
+		Categoria cat6 = new Categoria(null, "Som e Video");
+		Categoria cat7 = new Categoria(null, "Multimidias");
+		
 		
 		Produto p1  = new Produto (null, "Auto Radio Original Polo TSI", 2500.00 );
 		Produto p2 = new Produto (null, "Pneu 205 55 16", 550.00);
@@ -83,7 +89,7 @@ public class ProjetolojavirtualApplication implements CommandLineRunner {
 		p2.getCategorias().addAll(Arrays.asList(cat1, cat2));
 		p3.getCategorias().addAll(Arrays.asList(cat1));
 		
-		categoriaRepository.saveAll(Arrays.asList(cat1, cat2));
+		categoriaRepository.saveAll(Arrays.asList(cat1, cat2, cat3, cat4, cat5, cat6, cat7));
 		produtoRepository.saveAll(Arrays.asList(p1, p2, p3));
 		
 		Estado est1 = new Estado(null, "Minas Gerais");
