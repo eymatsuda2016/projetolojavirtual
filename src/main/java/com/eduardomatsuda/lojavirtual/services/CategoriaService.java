@@ -1,5 +1,6 @@
 package com.eduardomatsuda.lojavirtual.services;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -45,6 +46,10 @@ public class CategoriaService {
 			throw new DataIntegrityException ("Esta Categoria possui produtos, você não poderá excluir uma categoria com Proutos");
 		}
 	}
+	
+	public List<Categoria> findAll(){
+		return repo.findAll()
+;	}
 	
 
 }
