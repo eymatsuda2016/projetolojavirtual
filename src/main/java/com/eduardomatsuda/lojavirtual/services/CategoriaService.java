@@ -12,6 +12,7 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
 import com.eduardomatsuda.lojavirtual.domain.Categoria;
+import com.eduardomatsuda.lojavirtual.dto.CategoriaDTO;
 import com.eduardomatsuda.lojavirtual.repositories.CategoriaRepository;
 import com.eduardomatsuda.lojavirtual.services.exceptions.DataIntegrityException;
 import com.eduardomatsuda.lojavirtual.services.exceptions.ObjectNotFoundException;
@@ -56,6 +57,10 @@ public class CategoriaService {
 	public Page<Categoria>findPage(Integer page, Integer linesPerPage, String orderBy, String direction){
 		PageRequest pageRequest = PageRequest.of(page, linesPerPage, Direction.valueOf(direction), orderBy);
 		return repo.findAll(pageRequest);
+	}
+	
+	public Categoria fromDTO(CategoriaDTO objDTo) {
+		return new Categoria(objDTo.getId(), objDTo.getNome());
 	}
 
 }
